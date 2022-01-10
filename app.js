@@ -17,7 +17,7 @@ mongoose
     poolSize: 10,
   })
   .then(() => {
-    app.listen(80, () => {
+    app.listen(process.env.PORT || 80, () => {
       console.log("> Server Running on Port 80");
       console.log("> Connected to Database\n");
     });
