@@ -1,0 +1,14 @@
+doctype html
+html(lang="en")
+  head
+    include partials/head.pug
+    block title 
+  body(class="sidebar-dark")
+    .main-wrapper
+      include partials/sidebar.pug
+      .page-wrapper
+        include partials/navbar.pug
+        .page-content
+          block content 
+        include partials/footer.pug
+    include partials/js.pug

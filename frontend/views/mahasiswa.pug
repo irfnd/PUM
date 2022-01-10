@@ -1,0 +1,101 @@
+extends layout.pug 
+
+block title
+  title Daftar Mahasiswa | Sistem Pendataan Suhu Tubuh - PUM Kelompok 1
+
+block user
+  if !guest
+    .navbar-content
+      ul.navbar-nav
+        li.nav-item.dropdown.nav-profile
+          a#profileDropdown.nav-link.dropdown-toggle(href='#' role='button' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+            img(src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7imXJMeK9b42t8JBjKxYP2zJd8MVrbVNEAg&usqp=CAU' alt='userr')
+          .dropdown-menu(aria-labelledby='profileDropdown')
+            .dropdown-header.d-flex.flex-column.align-items-center
+              .figure.mb-3
+                img(src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7imXJMeK9b42t8JBjKxYP2zJd8MVrbVNEAg&usqp=CAU' alt='')
+              .info.text-center
+                p.name.font-weight-bold.mb-0 #{userName}
+                p.email.text-muted.mb-3 #{userEmail}
+            .dropdown-body
+              ul.profile-nav.p-0.pt-3
+                li.nav-item
+                  a.nav-link(href='/logout')
+                    i(data-feather='log-out')
+                    span Log Out
+
+block sidebarActive
+  li.nav-item(class=(activePage == "index") ? "active" : "")
+    a.nav-link(href='/' )
+      i.link-icon(data-feather='box')
+      span.link-title Dashboard
+  li.nav-item(class=(activePage == "pengguna") ? "active" : "")
+    a.nav-link(href='/pengguna')
+      i.link-icon(data-feather='users')
+      span.link-title Daftar Pengguna
+  li.nav-item(class=(activePage == "mahasiswa") ? "active" : "")
+    a.nav-link(href='/mahasiswa')
+      i.link-icon(data-feather='user-check')
+      span.link-title Daftar Mahasiswa
+  li.nav-item
+      a.nav-link(href='/logout' )
+        i.link-icon(data-feather='log-out')
+        span.link-title Logout
+
+block content 
+  .d-flex.justify-content-between.align-items-center.flex-wrap.grid-margin
+    div
+      h4.mb-0 Daftar Mahasiswa
+  .row
+    .col-12.col-xl-12.grid-margin.stretch-card
+      .card
+        .card-body
+          h6.card-title Edit Mahasiswa
+          form(method="post", action="/mahasiswa/" + mhs._id)
+            .row
+              .col-sm-4
+                .form-group
+                  label.control-label Nama
+                  input.form-control(type='text', disabled=edit, value=mhs.nama, name="nama")
+              .col-sm-4
+                .form-group
+                  label.control-label NPM
+                  input.form-control(type='text', disabled=edit, value=mhs.npm, name="npm")
+              .col-sm-4
+                .form-group
+                  label.control-label UID E-KTP
+                  input.form-control(type='text', disabled, value=mhs.id_ktp, name="id_ktp")
+            button.btn.btn-primary.mr-1(type='submit', disabled=edit) Simpan
+            a(href="/mahasiswa")
+              button.btn.btn-danger(type='button', disabled=edit) Batal
+  .row
+    .col-12.col-xl-12.grid-margin.stretch-card
+      .card
+        .card-body
+          .d-flex.justify-content-between.align-items-baseline.mb-2
+            h6.card-title.mb-3 Mahasiswa
+          .table-responsive
+            table.table.table-hover.mb-0
+              thead
+                tr
+                  th.pt-0 #
+                  th.pt-0 Nama Mahasiswa
+                  th.pt-0 NPM
+                  th.pt-0 UID E-KTP
+                  th.pt-0 Action
+              tbody
+                each mhs, i in daftarMhs
+                  tr
+                    td= `${i+1}.`
+                    td= mhs.nama
+                    td= mhs.npm 
+                    td= mhs.id_ktp
+                    td.d-inline-flex
+                      a(href="/mahasiswa/" + mhs._id)
+                        button.btn.btn-warning.mr-1 Edit
+                      a(href="/mahasiswa/delete/" + mhs._id)
+                        button.btn.btn-danger Hapus
+                else
+                  tr 
+                    td(colspan="5")
+                      center Data kosong!

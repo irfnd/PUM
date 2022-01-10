@@ -1,0 +1,42 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible' content='ie=edge')
+    title Login | Sistem Pendataan Suhu Tubuh - PUM Kelompok 1
+    link(rel='stylesheet' href='/vendors/core/core.css')
+    link(rel='stylesheet' href='/fonts/feather-font/css/iconfont.css')
+    link(rel='stylesheet' href='/vendors/flag-icon-css/css/flag-icon.min.css')
+    link(rel='stylesheet' href='/css/demo_1/style.css')
+    link(rel='shortcut icon' href='/images/favicon.png')
+  body
+    .main-wrapper
+      .page-wrapper.full-page
+        .page-content.d-flex.align-items-center.justify-content-center
+          .row.w-100.mx-0.auth-page
+            .col-md-8.col-xl-6.mx-auto
+              .card
+                .row
+                  .col-md-4.pr-md-0
+                    .auth-left-wrapper
+                  .col-md-8.pl-md-0
+                    .auth-form-wrapper.px-4.py-5
+                      a.noble-ui-logo.d-block.mb-2(href='#') PUM 
+                        span Kelompok 1
+                      h5.text-muted.font-weight-normal.mb-4 Sistem Pendataan Suhu Tubuh
+                      if msg != null
+                        h5.text-danger.font-weight-bold.mb-2 *#{msg}
+                      form.forms-sample(action='/auth', method='post')
+                        .form-group
+                          label(for='exampleInputEmail1') Email
+                          input#exampleInputEmail1.form-control(type='email', placeholder='Email', name="email")
+                        .form-group
+                          label(for='exampleInputPassword1') Password
+                          input#exampleInputPassword1.form-control(type='password', placeholder='Password', name="pass")
+                        .mt-3
+                          input.btn.btn-primary.mr-2.mb-2.mb-md-0.text-white(type='submit' value="Login")
+                        a.d-block.mt-3.text-muted(href='/guest') Masuk Sebagai Tamu
+    script(src='/vendors/core/core.js')
+    script(src='/vendors/feather-icons/feather.min.js')
+    script(src='/js/template.js')
