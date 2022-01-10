@@ -7,7 +7,7 @@
     "start": "node app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Irfnd.Iqbl",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.24.0",
