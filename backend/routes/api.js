@@ -111,7 +111,7 @@ exports.getAllSuhu = async (req, res) => {
       console.log(`> ${req.method} -> ${res.statusCode} ${res.statusMessage}`);
     } else {
       const results = await Suhu.find({ tanggal: req.params.tanggal }).sort({
-        added: "asc",
+        added: "desc",
       });
       res.status(200).json({
         statusCode: res.statusCode,
