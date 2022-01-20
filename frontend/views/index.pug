@@ -73,7 +73,7 @@ block content
                 h6.card-title.mb-2 Suhu tubuh tertinggi
               .row
                 .col-6.col-md-12.col-xl-5
-                  h3.mb-0= `${sTinggi ? sTinggi.suhu : "-"}°C`
+                  h4.mb-0= `${sTinggi ? sTinggi.suhu : "-"}°C`
                   .d-flex.align-items-baseline
                     p.text-primary
                       i.icon-sm.mb-1(data-feather='user') 
@@ -87,7 +87,7 @@ block content
                 h6.card-title.mb-2 Suhu tubuh terendah
               .row
                 .col-6.col-md-12.col-xl-5
-                  h3.mb-0= `${sRendah ? sRendah.suhu : "-"}°C`
+                  h4.mb-0= `${sRendah ? sRendah.suhu : "-"}°C`
                   .d-flex.align-items-baseline
                     p.text-primary
                       i.icon-sm.mb-1(data-feather='user')
@@ -101,7 +101,7 @@ block content
                 h6.card-title.mb-2 Suhu tubuh rata-rata
               .row
                 .col-6.col-md-12.col-xl-5
-                  h3.mb-0= `${sRata[0] ? Math.round(sRata[0].suhu * 100) / 100 : "-"}°C`
+                  h4.mb-0= `${sRata[0] ? Math.round(sRata[0].suhu * 100) / 100 : "-"}°C`
                   .d-flex.align-items-baseline
                     p.text-primary
                       i.icon-sm.mb-1(data-feather='users')
